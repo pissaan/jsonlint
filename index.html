@@ -95,3 +95,133 @@ window.addEventListener("load", function(){
         },
         "content": {
             "message": "By using JSONLint.com you accept our use of cook
+                "link": "privacy policy.",
+                "href": "https://jsonlint.com/privacy-policy.html"
+        }
+    })});
+        </script>
+        <link href="css/style.css" rel="stylesheet"></head>
+
+    <body>
+        <div class="bsa-cpc-inline"></div>
+        <header>
+            <nav>
+                <div class="dev-tools-logo">JSON</div>
+                <div class="logo">
+                    <h1>JSONLint <span class="sub-title">- The JSON Validator</span></h1> </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop">
+                <ul class="menu">
+                    <li class="dropdown">
+                        <label for="drop-1" class="toggle">More Developer Tools</label> <a href="#"><span class="three-lines"></span><span class="more-dev">More Developer</span> <span class="more-tools">Tools</span></a>
+                        <input type="checkbox" id="drop-1">
+                        <ul>
+                            <li class="jscompress"><a target="_blank" href="https://jscompress.com/"><strong>JSCompress</strong><br><span class="tagline-title">The JavaScript Compression Tool</span></a></li>
+                            <li class="keygen"><a target="_blank" href="https://randomkeygen.com/"><strong>RandomKeygen</strong><br><span class="tagline-title">The Random Password Generator</span></a></li>
+                            <li class="comp"><a target="_blank" href="https://jsoncompare.com/"><strong>JSONCompare</strong><br><span class="tagline-title"> The Advanced JSON Linter</span></a></li>
+                            <li class="dns"><a target="_blank" href="https://dns-lookup.com/"><strong>DNS-Lookup</strong><br><span class="tagline-title">The Professional DNS & IP Lookup Tool</span></a></li>
+                            <li class="jsvalidate"><a target="_blank" href="https://validatejavascript.com/"><strong>ValidateJavaScript</strong><br><span class="tagline-title">Quickly Find & Fix JavaScript Errors</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="pro-button"><a href="https://jsoncompare.com/" target="_blank"><span class="more-dev">Try the New</span> Pro</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="ad top">
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7DK23U&placement=jsonlintcom" id="_carbonads_js"></script>
+            </div>
+            <form name="main">
+                <textarea id="code" name="code" style="display: none;"></textarea>
+                <div class="validate">
+                    <button type="submit" data-ga="validate">Validate JSON</button>
+                    <button type="reset" data-ga="clear">Clear</button>
+                    <button class="copy" data-ga="copy">Copy</button>
+                    <div class="memberful-button">
+                        <a href="https://jsonlint.memberful.com/checkout?plan=21158" data-ga="support">Support JSONLint for $2/Month</a>
+                    </div>
+                </div>
+            </form>
+            <section id="result-container">
+                <h3>Results</h3>
+                <pre id="result" class="error"></pre>
+            </section>
+            <!-- bsa-cpc -->
+            <div class="bsa-ad">
+                <div class="partner">
+                    <p>JSONLint <strong>Partners</strong></p>
+                    <sub>Check out their products!</sub>
+                </div>
+                <div class="bsa-cpc"></div>
+            </div>
+
+            <script>
+(function() {
+    if (typeof _bsa !== 'undefined' && _bsa) {
+        _bsa.init('default', 'CVADT27Y', 'placement:jsonlintcom', {
+            target: '.bsa-cpc',
+            align: 'horizontal',
+            disable_css: 'true'
+        });
+    }
+})();
+window.onload = function() {
+    if (document.getElementsByClassName("_default_").length > 0) {
+        document.getElementsByClassName("bsa-ad")[0].style.display = "block";
+    }
+}
+            </script>
+            <!-- /bsa-cpc -->
+            <div class="info">
+                <p class="heading">About JSONLint?</p>
+                <p>JSONLint is a validator and reformatter for JSON, a lightweight data-interchange format. Copy and paste, directly type, or input a URL in the editor above and let JSONLint tidy and validate your messy JSON code.</p>
+
+                <p class="heading">Tips & Tricks</p>
+                <ul>
+                    <li>You can directly input a URL into the editor and JSONLint will scrape it for JSON and parse it.</li>
+                    <li>You can provide JSON to lint in the URL if you link to JSONLint with the <code>"json"</code> parameter. Here's an <a href="http://jsonlint.com/?json=%7B%22hello%22:%20%22world%22%7D" target="_blank">example URL to test</a>.</li>
+                    <li>JSONLint can also be used as a JSON compressor if you add <a href="?reformat=compress"><code>?reformat=compress</code></a> to the URL.</li>
+                </ul>
+                <p class="heading">Common Errors</p>
+                <ul>
+                    <li>Expecting <code>'STRING'</code> - You probably have an extra comma at the end of your collection. Something like <code>{ "a": "b", }</code></li>
+                    <li>Expecting <code>'STRING'</code>, <code>'NUMBER'</code>, <code>'NULL'</code>, <code>'TRUE'</code>, <code>'FALSE'</code>, <code>'{'</code>, <code>'['</code> - You probably have an extra comma at the end of your list. Something like: <code>["a", "b", ]</code></li>
+                    <li>Enclosing your collection keys in quotes. Proper format for a collection is <code>{ "key": "value" }</code></li>
+                    <li>Make sure you follow <a href="http://www.json.org/" target="_blank">JSON's syntax</a> properly. For example, always use double quotes, always quotify your keys, and remove all callback functions.</li>
+                </ul>
+                <p class="heading">Different Results</p>
+                <p>If you use a Windows computer you may end up with different results. This is possibly due to the way Windows handles newlines. Essentially, if you have just newline characters <code>(\n)</code> in your JSON and paste it into JSONLint from a Windows computer, it may validate it as valid erroneously since Windows may need a carriage return <code>(\r)</code> as well to detect newlines properly. As a solution, either use direct URL input, or make sure your content's newlines match the architecture your system expects!</p>
+                <p class="heading">Credits</p>
+                <p>Maintained by CircleCell. Thanks to <a href="http://www.crockford.com/" target="_blank">Douglas Crockford</a> of JSON and JS Lint, and <a href="http://zaa.ch/" target="_blank">Zach Carter</a>, who built a <a href="https://github.com/zaach/jsonlint">pure JavaScript implementation</a>. You can download the <a href="https://www.github.com/circlecell/jsonlintdotcom" target="_blank" data-ga="sourceLink">JSONLint source code on GitHub</a>.</p>
+            </div>
+            <div class="ad bottom">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- JSONLint Footer -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8400268452481648" data-ad-slot="3654656999" data-ad-format="auto"></ins>
+                <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            </main>
+            <footer>
+                &copy; 2018 JSONLint.com &mdash;
+                <a href="https://www.buysellads.com/buy/detail/266667/zone/1303970" target="_blank" data-ga="advertise">Advertise Here</a>
+                &mdash;
+                <a href="privacy-policy.html" target="_blank">Privacy</a>
+            </footer>
+            <script>
+(function(){
+    if(typeof _bsa !== 'undefined' && _bsa) {
+        // format, zoneKey, segment:value, options
+        _bsa.init('flexbar', 'C6ADVKE', 'placement:jsonlint', {
+            align: 'fixedtop'
+        });
+    }
+})();
+            </script>
+            <script type="text/javascript" src="js/app-52d6181dc858186aa4f2.js"></script></body>
+
+</html>
+
