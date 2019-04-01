@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Json validator</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/css/editor.css">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/static/js/editor.js"></script>
+<script src="/static/js/ip.js"></script>
+
+<style type="text/css">
+	
+	.dropdown:hover>.dropdown-menu{
+		display: block;
+	}
+  .Editor-container{
+    border: 2px solid black;
+  }
+  #menuBarDiv_editText1{
+    border:1px solid #1343EE;
+  }
+  .Editor-editor{
+    background-color: #F8FAFC;
+  }
+  #validateJson{
+  background-image: linear-gradient(red, yellow, blue);
+  }
+  .gradient-button {
+    margin: 10px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
+}
+
+.gradient-button-1 {background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)}
+.gradient-button-1:hover { background-position: right center; }
+
+.gradient-button-2 {background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%)}
+.gradient-button-2:hover { background-position: right center; }
+
+.gradient-button-3 {background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%)}
+.gradient-button-3:hover { background-position: right center; }
+
+.gradient-button-4 {background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%)}
+.gradient-button-4:hover { background-position: right center; }
+
+.well{
+  border: 1px solid black;
+  padding: 10px;
+  height: 200px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#result').hide();
+  baseip=ip;
+  $('#editText1').Editor();
+
+
+  $('#clear').click(function(){
+    $('#editText1').Editor("setText","");
+  })
+
+$('#validatejson').click(function(e){
+/*var json_Str=$('#editText1').val(content);
+alert(json_Str);
+*/
+try{
+    var jsonString=$("#editText1").Editor("getText");
+  }
+  catch(err){
+    console.log(err);
+
+  }
+
+var ip=baseip+"checkJson/"
+
+  $.ajax({
+  type: "post",
+  url: ip,
+  data: {strjson:jsonString},
+  cache: false,
+  success: function(data){
+    console.log(data);
+    var data=JSON.parse(data);
+    var res=data.result;
+    var description=data.description;
+    $('#result').show();
+    if(res=="success"){
+
+
+      $('#informatoin').css('color','green');
+      $('#informatoin').text(description);
+
+    }
+    else{
+      $('#informatoin').css('color','red');
+      $('#informatoin').text(description);
+    }
+
+  }
+});
+
+
+
+})
+
+
+})
+</script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="/static/images/logo.png" height="50" width="50"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      
+      
+      <li class="nav-item dropdown">
+      	
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-align-justify" style="padding: 5px"></i>Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      
+    </ul>
+   
+  </div>
+</nav>
+
+<div class="container" style="margin-bottom: 100px">
+<div class="row">
+<div class="col-md-12" style="margin-top: 50px">
+
+<textarea id="editText1"></textarea>
+
+
+
+</div>
+
+
+
+</div>
+<div class="row mt-3">
+  <div class="col-md-12">
+    <div class="text-right" id="data">
+<input type="submit" id="validatejson" class="btn gradient-button gradient-button-3 mr-2" value="Validate json"><input type="submit" id="clear" class="btn gradient-button gradient-button-3" value="Clear">
+</div>
+</div>
+  </div>
+
+
+  <div class="row" style="margin-bottom: 50px;margin-top: 50px" id="result">
+    <div class="col-md-12">
+      <h3 style="color: #0C7BD3">Result</h3>
+   <div class="well" style="background-color: #EEEEEE;font-size: 20px;padding: 80px" id="informatoin">
+
+
+
+   </div>
+ </div>
+
+  </div>
+
+
+   
+
+
+
+  </div>
+
+
+
+</body>
+</html>
