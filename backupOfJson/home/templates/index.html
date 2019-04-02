@@ -19,6 +19,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="/static/js/editor.js"></script>
 <script src="/static/js/ip.js"></script>
+<script src="/static/js/jquery.beautify-json.js"></script>
 
 <style type="text/css">
 	
@@ -81,9 +82,67 @@ $(document).ready(function(){
   baseip=ip;
   $('#editText1').Editor();
 
+  $('#modalcontent').beautifyJSON({
+
+  hoverable: true,
+
+  collapsible: true,
+
+  color: true
+
+});
+
+
 
   $('#clear').click(function(){
     $('#editText1').Editor("setText","");
+  })
+
+
+
+
+  $('#formate').click(function(){
+
+
+    var jsonString=$("#editText1").Editor("getText");
+
+    var ip=baseip+"formJson/";
+
+  $.ajax({
+  type: "post",
+  url: ip,
+  data: {strjson:jsonString},
+  cache: false,
+  success: function(data){
+    console.log(data);
+    var data=JSON.parse(data);
+    var res=data.result;
+    var description=data.description;
+    var content=data.content
+    $('#result').show();
+    if(res=="success"){
+      console.log(typeof content);
+$('#modalcontent').text(content);
+$('#myModal').modal('show');
+
+
+
+      $('#informatoin').css('color','green');
+      $('#informatoin').text(description);
+
+      $('#editText1').Editor('setText',content);
+
+    }
+    else{
+      $('#informatoin').css('color','red');
+      $('#informatoin').text(description);
+    }
+
+
+
+  }
+});
+
   })
 
 $('#validatejson').click(function(e){
@@ -98,7 +157,7 @@ try{
 
   }
 
-var ip=baseip+"checkJson/"
+var ip=baseip+"checkJson/";
 
   $.ajax({
   type: "post",
@@ -112,6 +171,8 @@ var ip=baseip+"checkJson/"
     var description=data.description;
     $('#result').show();
     if(res=="success"){
+
+
 
 
       $('#informatoin').css('color','green');
@@ -180,7 +241,8 @@ var ip=baseip+"checkJson/"
 <div class="row mt-3">
   <div class="col-md-12">
     <div class="text-right" id="data">
-<input type="submit" id="validatejson" class="btn gradient-button gradient-button-3 mr-2" value="Validate json"><input type="submit" id="clear" class="btn gradient-button gradient-button-3" value="Clear">
+      <input type="submit" id="formate" class="btn gradient-button gradient-button-3 mr-2" value="Formate Json">
+<input type="submit" id="validatejson" class="btn gradient-button gradient-button-3 mr-2" value="Validate Json"><input type="submit" id="clear" class="btn gradient-button gradient-button-3" value="Clear">
 </div>
 </div>
   </div>
@@ -206,6 +268,31 @@ var ip=baseip+"checkJson/"
   </div>
 
 
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Formatted Json</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" id="modalcontent">
+        {}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
