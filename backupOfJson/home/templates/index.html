@@ -43,7 +43,7 @@
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 15px;
     padding: 10px;
-    text-align: center;
+    text-align: center; 
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
@@ -80,6 +80,7 @@
 $(document).ready(function(){
   $('#result').hide();
   baseip=ip;
+  console.log(baseip);
   $('#editText1').Editor();
 
   $('#modalcontent').beautifyJSON({
