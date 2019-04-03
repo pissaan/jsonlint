@@ -107,11 +107,11 @@ $(document).ready(function(){
 
     var jsonString=$("#editText1").Editor("getText");
 
-    var ip=baseip+"formJson/";
+    var myip=baseip+"formJson/";
 
   $.ajax({
   type: "post",
-  url: ip,
+  url: myip,
   data: {strjson:jsonString},
   cache: false,
   success: function(data){
@@ -158,11 +158,12 @@ try{
 
   }
 
-var ip=baseip+"checkJson/";
+var myip=baseip+"checkJson/";
+console.log(myip);
 
   $.ajax({
   type: "post",
-  url: ip,
+  url: myip,
   data: {strjson:jsonString},
   cache: false,
   success: function(data){
