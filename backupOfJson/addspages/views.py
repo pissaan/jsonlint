@@ -1,12 +1,11 @@
 from django.shortcuts import render,HttpResponse
 
+# Create your views here.
 import json
 # Create your views here.
 
 def index(request):
-	print("this is cool")
-
-	return render(request,"index.html",{})
+	return render(request,"addindex.html",{})
 
 
 
