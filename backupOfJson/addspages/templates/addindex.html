@@ -13,6 +13,13 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style type="text/css">
+
+	#side{
+		background-color: #01295C;
+	}
+	#navcolor{
+		background-color: #01295C;
+	}
 	
 	.dropdown:hover>.dropdown-menu{
 		display: block;
@@ -24,7 +31,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" id="navcolor">
   <a class="navbar-brand" href="#"><img src="/static/images/logo1.png" height="100" width="100"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -36,8 +43,8 @@
       
       <li class="nav-item dropdown">
       	
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-align-justify" style="padding: 5px"></i>Dropdown
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+          <i class="fa fa-align-justify" style="padding: 5px;color: white"></i>Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
@@ -54,25 +61,25 @@
 
 <div class="container-fluid">
 <div class="row">
-<div class="col-md-3" style="background-color: black;height: 100vh;padding: 40px">
+<div class="col-md-3" style="height: 100vh;padding: 40px" id="side">
 <div >
 
-	<p id="sidemenu" class="text-center">Banner Ads</p>
+	<p id="sidemenu" class="text-left">Banner Ads</p>
 </div>
 <div >
-	<p id="sidemenu" class="text-center">Video Ads</p>
+	<p id="sidemenu" class="text-left">Video Ads</p>
 </div>
 <div >
-	<p id="sidemenu" class="text-center">Native Ads</p>
+	<p id="sidemenu" class="text-left">Native Ads</p>
 </div>
 <div >
-	<p id="sidemenu" class="text-center">Rich Media Ads</p>
+	<p id="sidemenu" class="text-left">Rich Media Ads</p>
 </div>
 <div >
-	<p id="sidemenu" class="text-center">Html5 Ads</p>
+	<p id="sidemenu" class="text-left">Html5 Ads</p>
 </div>
 <div >
-	<p id="sidemenu" class="text-center">Contact</p>
+	<p id="sidemenu" class="text-left">Contact</p>
 
 </div>
 </div>
